@@ -1,0 +1,3 @@
+[submodule "openmv"]
+	path = openmv
+	url = git@github.com:DavidReiter/openmv.git
