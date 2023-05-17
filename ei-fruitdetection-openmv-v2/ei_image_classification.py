@@ -7,6 +7,8 @@ sensor.set_pixformat(sensor.RGB565)    # Set pixel format to RGB565 (or GRAYSCAL
 sensor.set_framesize(sensor.QVGA)      # Set frame size to QVGA (320x240)
 sensor.set_windowing((240, 240))       # Set 240x240 window.
 sensor.skip_frames(time=2000)          # Let the camera adjust.
+sensor.set_vflip(True) # Flips the image vertically
+sensor.set_hmirror(True) # Mirrors the image horizontally
 
 net = None
 labels = None
@@ -34,7 +36,7 @@ while(True):
         print("**********\nPredictions at [x=%d,y=%d,w=%d,h=%d]" % obj.rect())
         img.draw_rectangle(obj.rect())
         # This combines the labels and confidence values into a list of tuples
-        predictions_list = list(zip(labels, Yobj.output()))
+        predictions_list = list(zip(labels, obj.output()))
 
         for i in range(len(predictions_list)):
             print("%s = %f" % (predictions_list[i][0], predictions_list[i][1]))
